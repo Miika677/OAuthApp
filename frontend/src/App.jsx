@@ -35,7 +35,7 @@ function Login({ setUserProp }) {
       console.log("Error");
       return;
     } else {
-      const dataUser = await postRequest("/login", { username: input });
+      const dataUser = await postRequest("/login/oauth", { username: input });
 
       setUserProp({"username" : dataUser.username});
       
