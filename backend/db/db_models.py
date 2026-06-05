@@ -1,4 +1,4 @@
-from sqlalchemy import Column, Integer, String, ForeignKey, DateTime
+from sqlalchemy import Column, Integer, String, ForeignKey, DateTime, UniqueConstraint
 from sqlalchemy.orm import relationship
 from backend.db.db import Base
 
@@ -12,7 +12,16 @@ class Word(Base):
 class User(Base):
     __tablename__ = "users"
     id = Column(Integer, primary_key=True, index=True)
-    username = Column(String, unique=True, nullable=False)
+
+    provider = Column(String, nullable=False)
+    provider_id = Column(Integer)
+
+    username = Column(String)
+    avatar = Column(String, nullable=True)
+
+    __table_args__ = (
+    UniqueConstraint("provider", "provider_id"),
+)
 
 class Vote(Base):
     __tablename__ = "votes"

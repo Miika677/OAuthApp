@@ -15,6 +15,10 @@ The goal of this project is to simulate a real-world authentication flow and pra
 - CI pipeline: planned
 - Deployment: planned
 
+### Possible Future Additions
+
+- Different OAuth services with linked local account; support for multiple login providers 
+
 ## Tech Stack
 React, FastAPI, PostgreSQL
 
