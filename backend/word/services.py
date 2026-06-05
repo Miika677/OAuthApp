@@ -10,8 +10,7 @@ from backend.auth.tokens import decode_token
 def get_word_service(db: Session):
     return db.query(Word).order_by(desc(Word.votes_total)).first()
 
-def create_word_service(input : str, access_token : str, db: Session):
-    id_from_token=decode_token(access_token)
+def create_word_service(input : str, id_from_token : int, db: Session):
 
     exists_word = db.query(Word).filter(Word.word == input).first()
     if exists_word:
