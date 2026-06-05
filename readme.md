@@ -11,7 +11,7 @@ The goal of this project is to simulate a real-world authentication flow and pra
 - Basic word voting system functionality: implemented
 - Placeholder login using HTTP-only cookies: implemented
 - GitHub OAuth integration: Implemented
-- Testing: planned
+- Testing: WIP
 - CI pipeline: planned
 - Deployment: planned
 
