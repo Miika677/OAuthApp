@@ -17,7 +17,8 @@ The goal of this project is to simulate a real-world authentication flow and pra
 
 ### Possible Future Additions
 
-- Different OAuth services with linked local account; support for multiple login providers 
+- Different OAuth services with linked local account; support for multiple login providers
+- Postgresql Docker container as testing DB to replace in-memory SQLite
 
 ## Tech Stack
 React, FastAPI, PostgreSQL
