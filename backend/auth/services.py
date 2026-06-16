@@ -85,6 +85,9 @@ async def github_get_user(access_token : str):
         }
     
 def get_current_user_id(access_token : str = Cookie(None)):
+    if not access_token:
+        raise HTTPException(status_code=401, detail="No access token")
+    
     return decode_token(access_token)
 
 def get_me(user_id : int, db : Session):

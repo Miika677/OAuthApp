@@ -17,5 +17,6 @@ def get_word(db: Session = Depends(start_session)):
 @router.post("/word")
 def create_word(input : WordIn, token_id : int = Depends(get_current_user_id), db: Session = Depends(start_session)):
     create_word_service(input.word, token_id, db)
+    db.commit()
 
     return {"status" : "ok"}
