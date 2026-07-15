@@ -1,4 +1,4 @@
-from sqlalchemy import Column, Integer, String, ForeignKey, DateTime, UniqueConstraint
+from sqlalchemy import Column, Integer, String, ForeignKey, DateTime, UniqueConstraint, Boolean
 from sqlalchemy.orm import relationship
 from backend.db.db import Base
 
@@ -8,6 +8,8 @@ class Word(Base):
     word = Column(String, unique=True, nullable=False)
     votes_total = Column(Integer, default=0)
     latest_vote = Column(DateTime(timezone=True))
+    first_submitted_user_id = Column(Integer, ForeignKey("users.id"), nullable=False)
+    has_been_wotd = Column(Boolean, default=False,  nullable=False)
 
 class User(Base):
     __tablename__ = "users"
@@ -30,6 +32,15 @@ class Vote(Base):
     user_id = Column(Integer, ForeignKey("users.id", ondelete="CASCADE"), nullable=False)
 
     word = relationship("Word")
+    user = relationship("User")
+
+class Comment(Base):
+    __tablename__ = "comments"
+    id = Column(Integer, primary_key=True, index=True)
+    user_id = Column(Integer, ForeignKey("users.id", ondelete="CASCADE"), nullable=False)
+    body = Column(String, unique=True, nullable=False)
+    date = Column(DateTime(timezone=True))
+
     user = relationship("User")
 
 

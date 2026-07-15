@@ -1,4 +1,4 @@
-from fastapi import APIRouter, Depends
+from fastapi import APIRouter, Depends, Response
 from fastapi.responses import RedirectResponse
 from sqlalchemy.orm import Session
 from backend.db.db import start_session
@@ -25,6 +25,19 @@ async def callback(code : str, db : Session = Depends(start_session)):
     httponly=True,
     secure=False,
     samesite="lax",
+    )
+
+    return response
+
+@router.post("/logout")
+def logout():
+    response = Response(status_code=204)
+
+    response.delete_cookie(
+        key="access_token",
+        httponly=True,
+        secure=False,
+        samesite="lax",
     )
 
     return response

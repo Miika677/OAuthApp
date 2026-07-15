@@ -5,6 +5,11 @@ export async function getRequest(endpoint) {
             method: "GET",
             credentials: "include"
         });
+
+        if (res.status == 401 && endpoint == "/me") {
+            console.log("Works!")
+            return null;
+        }
         
         if (!res.ok) {
             const err = await res.text();
