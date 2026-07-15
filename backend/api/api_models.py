@@ -1,4 +1,5 @@
 from pydantic import BaseModel
+from datetime import datetime
 
 class OrmBaseModel(BaseModel):
     class Config:
@@ -19,3 +20,23 @@ class LoginOut(OrmBaseModel):
 class MeOut(OrmBaseModel):
     id : int
     username : str
+
+class SubmissionsOut(OrmBaseModel):
+    word : str
+    is_first_submitted : bool
+    has_been_wotd : bool
+
+class UserOut(OrmBaseModel):
+    id: int
+    username: str
+    avatar: str | None
+    provider: str
+
+class CommentsIn(OrmBaseModel):
+    body : str
+
+class CommentsOut(OrmBaseModel):
+    id : int
+    body: str
+    date : datetime
+    user : UserOut
