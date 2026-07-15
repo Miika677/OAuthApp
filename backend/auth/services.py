@@ -23,6 +23,7 @@ def github_login_url():
 
 #TODO: use "user" in callback route to create user in db
 def login_db_service(oauth_info : dict, db : Session):
+    #Check with provider and then provider id first if a match is found
     user = db.query(User).filter(
         User.provider == oauth_info["provider"],
         User.provider_id == oauth_info["provider_id"], 
@@ -78,7 +79,7 @@ async def github_get_user(access_token : str):
         #TODO: Turn data normalization into helper function when more OAuth login methods are added
         #TODO: At that point different oauth methods should be grouped into their own files
         return {
-            "provider" : "github",
+            "provider" : "GitHub",
             "provider_id" : user["id"],
             "username" : user["login"],
             "avatar" : user["avatar_url"]
@@ -96,8 +97,10 @@ def get_me(user_id : int, db : Session):
         raise HTTPException(status_code=404, detail="User not found")
 
     return {
+        "id": user.id,
         "username": user.username,
-        "avatar": user.avatar
+        "avatar": user.avatar,
+        "provider": user.provider
         }
 
     
