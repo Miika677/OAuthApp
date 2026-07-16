@@ -24,7 +24,9 @@ The goal of this project is to simulate a real-world authentication flow and pra
 - Render Cron Jobs to periodically remove words that haven't been voted for in a while, potentially supplemented by AI-assisted detection of gibberish or low-quality submissions (if a suitable free API is available)
 
 ## Tech Stack
-React, FastAPI, PostgreSQL
+- React, FastAPI, PostgreSQL
+- Render (DB & Backend deployment)
+- Vercel (Frontend deployment)
 
 ## Key Features
 - GitHub OAuth authentication
