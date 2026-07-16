@@ -35,13 +35,15 @@ function GuestBook({currentUser}) {
     <div className="d-flex border-bottom">
       <h4>What people are saying about WotD...</h4>
 
-      <img
-        className="d-block d-lg-none ms-4"
-        src={WRITE}
-        alt="test"
-        style={{ cursor: "pointer", width: "30px", height: "30px" }}
-        onClick={() => setShowModal(true)}
-      />   
+      {currentUser&& (
+        <img
+          className="d-block d-lg-none ms-4"
+          src={WRITE}
+          alt="test"
+          style={{ cursor: "pointer", width: "30px", height: "30px" }}
+          onClick={() => setShowModal(true)}
+        />
+      )}
 
       {showModal&& (<span>LOL</span>)}
 
@@ -119,6 +121,7 @@ function GuestBook({currentUser}) {
       </div>
     }
 
+    {currentUser&& (
     <div className="d-none d-lg-flex">
       <CommentField
         input={commentInput}
@@ -126,6 +129,7 @@ function GuestBook({currentUser}) {
         postComment={() => handleSubmitComments(commentInput)}
       />
     </div>
+    )}
 
   </div>
   )

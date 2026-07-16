@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Link, useLocation, useNavigate } from "react-router-dom";
 import { getRequest, postRequest } from "./api.js"
 import reactLogo from "./assets/react.svg";
 
@@ -9,16 +9,19 @@ import DefaultPage from './pages/DefaultPage.jsx';
 import Login from "./pages/Login.jsx"
 import GuestBook from './components/GuestBook.jsx';
 
-import UserBar from './components/UserBar.jsx';
-import LoginBar from './components/LoginBar.jsx';
+import SideBar from './components/SideBar/SideBar.jsx';
 
 function App() {
+  const location = useLocation();
+  const navigate = useNavigate();
+
   const [topWord, setTopWord] = useState("Loading...");
   const [user, setUser] = useState(null);
 
   const [comments, setComments] = useState([]);
   const [loadingComments, setLoadingComments] = useState(null);
 
+  //Fetch all data
   useEffect(()=> {
     
     const fetchWord = async () => {
@@ -48,6 +51,30 @@ function App() {
 
   }, [])
 
+  //redirect out of guestbook when resizing to desktop
+  useEffect(() => {
+        const mediaQuery = window.matchMedia("(min-width: 992px)");
+
+        const redirectIfNeeded = () => {
+            if (
+                mediaQuery.matches &&
+                location.pathname === "/guestbook"
+            ) {
+                navigate("/", { replace: true });
+            }
+        };
+
+        redirectIfNeeded();
+
+        mediaQuery.addEventListener("change", redirectIfNeeded);
+
+        return () => {
+            mediaQuery.removeEventListener("change", redirectIfNeeded);
+        };
+
+    }, [location.pathname, navigate]);
+
+
   const handleLogout = async () => {
     await postRequest("/logout");
     setUser(null);
@@ -60,13 +87,7 @@ function App() {
       <div className="row desktop-full-height">
         <div className="col-12 col-lg-2">
           <div className="p-4">
-            {user ?
-              (
-                <UserBar user={user} onLogout={handleLogout}/>
-              ) : (
-                <LoginBar/>
-              )
-            }
+            <SideBar user={user} onLogout={handleLogout}/>
           </div>
           
         </div>
