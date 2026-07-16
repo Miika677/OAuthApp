@@ -30,9 +30,10 @@ function LoginBar() {
             <img
                 src={google}
                 alt="Google"
-                style={{ cursor: "pointer", width: "30px", height: "30x" }}
+                style={{width: "30px", height: "30x", opacity: 0.5  }}
+                title="Coming Soon!"
             />
-            <span>Google</span>
+            <span style={{opacity: 0.5 }}>Google</span>
         </a>
 
         <GuestBookLink/>
