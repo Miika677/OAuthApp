@@ -3,6 +3,10 @@ from fastapi.responses import RedirectResponse
 from sqlalchemy.orm import Session
 from backend.db.db import start_session
 from backend.auth.services import login_db_service, github_login_url, github_token_exchange, github_get_user, get_current_user_id, get_me
+from dotenv import load_dotenv
+import os
+
+load_dotenv()
 
 router = APIRouter()
 
@@ -18,7 +22,7 @@ async def callback(code : str, db : Session = Depends(start_session)):
 
     token = login_db_service(user_dict, db)
 
-    response = RedirectResponse(url="http://localhost:5173")
+    response = RedirectResponse(url=f"http://{os.getenv('CLIENT_HOST')}:{os.getenv('CLIENT_PORT')}")
     response.set_cookie(
     key="access_token",
     value=token,

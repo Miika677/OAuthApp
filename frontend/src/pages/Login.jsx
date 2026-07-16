@@ -3,6 +3,8 @@ import { useState } from "react";
 function Login() {
   const [loginInput, setLoginInput] = useState("");
 
+  const backendUrl = import.meta.env.VITE_BACKEND_URL;
+
   return(
         <div>
           <p>Log In</p>
@@ -13,7 +15,7 @@ function Login() {
             onChange={(e) => setLoginInput(e.target.value)}
             placeholder="Username"
             />
-            <button className="btn btn-primary" onClick={() => window.location.href = "http://localhost:8000/login/oauth"}>Login</button>
+            <button className="btn btn-primary" onClick={() => window.location.href = `${backendUrl}/login/oauth`}>Login</button>
           </div>
         </div>
       )
