@@ -1,0 +1,30 @@
+import logout from "../../assets/logout.svg"
+
+function Profile({user, onLogout}) {
+    return(
+    <div className="gap-2 d-flex flex-wrap align-items-center">
+        <div className="d-flex flex-lg-wrap gap-2 align-items-center py-1">
+            <img
+                src={user.avatar}
+                alt="Avatar"
+                style={{width: "45px", height: "45px", borderRadius: "50%" }}
+            />
+
+            <span>
+                {user.username}
+            </span>
+
+        </div>
+
+        <a className="flex-shrink-0 me-5 me-lg-0" onClick={onLogout}>
+            <img
+            src={logout}
+            alt="Log out"
+            style={{ cursor: "pointer", width: "30px", height: "30px", opacity: 0.5 }}
+            />
+        </a>
+    </div>
+    )
+}
+
+export default Profile;
