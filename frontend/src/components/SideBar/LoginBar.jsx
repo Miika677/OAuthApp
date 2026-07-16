@@ -4,6 +4,8 @@ import google from "../../assets/google.svg"
 import GuestBookLink from "./GuestBookLink";
 
 function LoginBar() {
+    const backendUrl = import.meta.env.VITE_BACKEND_URL;
+
     return(
     <>
     <div className="d-flex align-items-center gap-2 border-bottom py-1" style={{ height: "60px" }}>
@@ -11,7 +13,7 @@ function LoginBar() {
         </div>
         
         <a 
-         href="http://localhost:8000/login/oauth"
+         href={`${backendUrl}/login/oauth`}
          className="d-flex align-items-center gap-2 border-bottom py-1 text-decoration-none"
         >
             <img

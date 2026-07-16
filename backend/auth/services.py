@@ -8,13 +8,13 @@ from urllib.parse import urlencode
 
 
 GITHUB_CLIENT_ID = os.getenv("GITHUB_CLIENT_ID")
-GITHUB_URI = os.getenv("GITHUB_URI")
+GITHUB_CALLBACK_URL = os.getenv("GITHUB_CALLBACK_URL")
 GITHUB_CLIENT_SECRET = os.getenv("GITHUB_CLIENT_SECRET")
 
 def github_login_url():
     params={
         "client_id": GITHUB_CLIENT_ID,
-        "redirect_uri": GITHUB_URI,
+        "redirect_uri": GITHUB_CALLBACK_URL,
         "scope": "read:user",
     }
 
