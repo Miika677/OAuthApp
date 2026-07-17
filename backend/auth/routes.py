@@ -38,13 +38,15 @@ async def callback(code : str, db : Session = Depends(start_session)):
 
 @router.post("/logout")
 def logout():
+    is_production = os.getenv("ENV") == "production"
+
     response = Response(status_code=204)
 
     response.delete_cookie(
-        key="access_token",
-        httponly=True,
-        secure=False,
-        samesite="lax",
+    key="access_token",
+    httponly=True,
+    secure=is_production,
+    samesite="none" if is_production else "lax",
     )
 
     return response
