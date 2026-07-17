@@ -13,7 +13,7 @@ Visit the website at https://o-auth-app-theta.vercel.app/
 - Basic word voting system functionality: implemented
 - Placeholder login using HTTP-only cookies: implemented
 - GitHub OAuth integration: Implemented
-- Testing: Basic backend tests for word endpoints implemented (in progress)
+- Testing: Basic backend tests for word endpoints implemented with pytest (in progress)
 - CI pipeline: Implemented (GitHub Actions)
 - Deployment: Deployed! https://o-auth-app-theta.vercel.app/
 
@@ -31,7 +31,13 @@ Visit the website at https://o-auth-app-theta.vercel.app/
 - Vercel (Frontend deployment)
 
 ## Key Features
+App Features:
 - GitHub OAuth authentication
 - Add new words or vote for existing ones
 - Live ranking of most-voted word
 - Full-stack CRUD architecture
+- Guestbook
+
+Development:
+- CI/CD Pipeline
+- Backend tests
