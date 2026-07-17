@@ -71,15 +71,26 @@ function GuestBook({currentUser}) {
 
             <div className="d-flex flex-column mx-2">
 
+              {/*User Profile*/}
               <div className="d-flex gap-1 align-items-center">
                   <img
                   src={comments.user.avatar}
                   alt="Avatar"
                   style={{width: "30px", height: "30px", borderRadius: "50%" }}
                   />
+
                   <span>{comments.user.username}</span>
+
+                  {comments.user.username === "Miika677"&&
+                    <span 
+                    className="text-success fw-bold"> 
+                    - DEV
+                    </span>
+                  }
+
               </div>
 
+              {/*Comment Body*/}
               <div className="d-flex flex-column border rounded-4 p-2 mt-2 text-break">
 
                 <p className="text-muted m-0">
@@ -110,10 +121,12 @@ function GuestBook({currentUser}) {
       >
 
         <div
+          className="w-75"
           onClick={(e)=>e.stopPropagation()}
         >
 
           <CommentField
+            
             input={commentInput}
             setInput={setCommentInput}
             postComment={() => {
