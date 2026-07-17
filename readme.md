@@ -41,3 +41,4 @@ App Features:
 Development:
 - CI/CD Pipeline
 - Backend tests
+- App deployed
