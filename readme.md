@@ -34,12 +34,12 @@ The goal of this project is to simulate a real-world authentication flow and pra
 App Features:
 - GitHub OAuth authentication
 - Add new words or vote for existing ones
-- Live ranking of most-voted word
-- Full-stack CRUD architecture
+- Live ranking of most voted word
 - Guestbook
 - Responsive design
 
 Development:
+- Full-stack CRUD architecture
 - CI/CD Pipeline
 - Backend tests
 - App deployed
