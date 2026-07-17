@@ -20,7 +20,6 @@ export async function getRequest(endpoint) {
         }
 
         const data = await res.json();
-        console.log(data);
         return data;
 
     } catch (err) {
@@ -45,7 +44,6 @@ export async function postRequest(endpoint, contents) {
         }
 
         const data = await res.json();
-        console.log(data);
         return data;
         
     } catch (err) {

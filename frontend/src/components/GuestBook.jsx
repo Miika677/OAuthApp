@@ -13,7 +13,13 @@ function GuestBook({currentUser}) {
   useEffect(()=> {
       const fetchComments = async () => {
         const data = await getRequest("/comments");
-        setCommentsList(data);
+        if (data) {
+          setCommentsList(data);
+        }
+        else {
+          setCommentsList([]);
+        }
+        
         setLoading(false);
       }
       
