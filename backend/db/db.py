@@ -18,10 +18,6 @@ engine = create_engine(DATABASE_URL, echo=True)
 SessionLocal = sessionmaker(bind=engine)
 Base = declarative_base()
 
-from backend.db.db_models import Word, User, Vote, Comment
-
-Base.metadata.create_all(bind=engine)
-
 def start_session() -> Generator:
     db = SessionLocal()
     try:
