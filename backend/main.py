@@ -12,9 +12,7 @@ app = FastAPI()
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins = [
-    f"http://{os.getenv('CLIENT_HOST')}:{os.getenv('CLIENT_PORT')}"
-    ],
+    allow_origins = [os.getenv('CLIENT_HOST')],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
