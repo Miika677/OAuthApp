@@ -22,6 +22,11 @@ app.include_router(words_router)
 app.include_router(auth_router)
 app.include_router(comments_router)
 
+from backend.db.db import Base, engine
+from backend.db import db_models
+
+Base.metadata.create_all(bind=engine)
+
 
 
 
