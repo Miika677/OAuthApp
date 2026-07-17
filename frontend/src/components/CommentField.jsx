@@ -20,7 +20,7 @@ function CommentField({input, setInput, postComment}) {
           />
 
           <button type="submit" className="btn btn-primary">
-            Submit Word
+            Submit Comment
           </button>
         </form>
     )
