@@ -26,8 +26,7 @@ function App() {
     
     const fetchWord = async () => {
       const data = await getRequest("/word");
-      setTopWord(data.word);
-      console.log(data.word);
+      if (data) {setTopWord(data.word);} else {setTopWord("-")}
     }
 
     const fetchUser = async () => {
