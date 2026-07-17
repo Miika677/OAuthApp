@@ -6,6 +6,8 @@ This is a full-stack CRUD application that uses GitHub OAuth for authentication.
 
 The goal of this project is to simulate a real-world authentication flow and practice building a structured full-stack application with proper development workflows, including testing, CI, and deployment.
 
+Visit the website at https://o-auth-app-theta.vercel.app/
+
 ## Current Status
 
 - Basic word voting system functionality: implemented
@@ -13,7 +15,7 @@ The goal of this project is to simulate a real-world authentication flow and pra
 - GitHub OAuth integration: Implemented
 - Testing: Basic backend tests for word endpoints implemented (in progress)
 - CI pipeline: Implemented (GitHub Actions)
-- Deployment: planned (Render Backend, Render DB & Vercel Frontend)
+- Deployment: Deployed! https://o-auth-app-theta.vercel.app/
 
 - Currently working on: Website functionality & refactoring
 
