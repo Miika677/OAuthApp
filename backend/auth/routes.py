@@ -22,7 +22,7 @@ async def callback(code : str, db : Session = Depends(start_session)):
 
     token = login_db_service(user_dict, db)
 
-    response = RedirectResponse(url=f"http://{os.getenv('CLIENT_HOST')}:{os.getenv('CLIENT_PORT')}")
+    response = RedirectResponse(url=os.getenv('CLIENT_HOST'))
     response.set_cookie(
     key="access_token",
     value=token,
