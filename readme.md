@@ -37,6 +37,7 @@ App Features:
 - Live ranking of most-voted word
 - Full-stack CRUD architecture
 - Guestbook
+- Responsive design
 
 Development:
 - CI/CD Pipeline
