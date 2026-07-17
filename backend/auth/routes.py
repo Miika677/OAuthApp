@@ -22,13 +22,16 @@ async def callback(code : str, db : Session = Depends(start_session)):
 
     token = login_db_service(user_dict, db)
 
+    is_production = os.getenv("ENV") == "production"
+
     response = RedirectResponse(url=os.getenv('CLIENT_HOST'))
+
     response.set_cookie(
     key="access_token",
     value=token,
     httponly=True,
-    secure=False,
-    samesite="lax",
+    secure=is_production,
+    samesite="none" if is_production else "lax",
     )
 
     return response
