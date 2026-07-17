@@ -27,6 +27,7 @@ The goal of this project is to simulate a real-world authentication flow and pra
 
 ## Tech Stack
 - React, FastAPI, PostgreSQL
+- Bootstrap
 - Render (DB & Backend deployment)
 - Vercel (Frontend deployment)
 
