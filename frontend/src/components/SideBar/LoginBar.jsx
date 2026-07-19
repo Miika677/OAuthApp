@@ -2,6 +2,7 @@ import github from "../../assets/github.svg"
 import google from "../../assets/google.svg"
 
 import GuestBookLink from "./GuestBookLink";
+import HomeLink from "./HomeLink";
 
 function LoginBar() {
     const backendUrl = import.meta.env.VITE_BACKEND_URL;
@@ -35,6 +36,10 @@ function LoginBar() {
             />
             <span style={{opacity: 0.5 }}>Google</span>
         </a>
+
+        <div className="ms-2 d-flex d-lg-none">
+            <HomeLink/>
+        </div>
 
         <GuestBookLink/>
     </>

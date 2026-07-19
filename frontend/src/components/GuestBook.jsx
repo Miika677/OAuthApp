@@ -51,8 +51,6 @@ function GuestBook({currentUser}) {
         />
       )}
 
-      {showModal&& (<span>LOL</span>)}
-
     </div>
     
     {/* List of comments div */}
