@@ -1,5 +1,6 @@
 import Profile from "./Profile"
 import GuestBookLink from "./GuestBookLink";
+import HomeLink from "./HomeLink";
 
 import { WRITE, HISTORY, COMMENTS } from "../../constants/icons"
 import { Link } from "react-router-dom";
@@ -13,7 +14,7 @@ function UserBar({user, onLogout}) {
 
 <Profile user={user} onLogout={onLogout}/>
 
-    
+        <HomeLink/>
 
         <Link to="/word"
         className="d-flex align-items-center gap-2 py-1 text-decoration-none me-2 me-lg-0"
