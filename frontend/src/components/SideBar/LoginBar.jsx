@@ -1,6 +1,4 @@
-import github from "../../assets/github.svg"
-import google from "../../assets/google.svg"
-
+import { GITHUB_LOGO, GOOGLE_LOGO } from "../../constants/icons";
 import GuestBookLink from "./GuestBookLink";
 import HomeLink from "./HomeLink";
 
@@ -18,26 +16,26 @@ function LoginBar() {
          className="d-flex align-items-center gap-2 border-bottom py-1 text-decoration-none"
         >
             <img
-                src={github}
+                src={GITHUB_LOGO}
                 alt="GitHub"
                 style={{ cursor: "pointer", width: "30px", height: "30px" }}
             />
-            <span>GitHub</span>
+            <span className="d-none d-md-flex">GitHub</span>
         </a>
 
         <a 
          className="d-flex align-items-center gap-2 py-1 text-decoration-none"
         >
             <img
-                src={google}
+                src={GOOGLE_LOGO}
                 alt="Google"
                 style={{width: "30px", height: "30x", opacity: 0.5  }}
                 title="Coming Soon!"
             />
-            <span style={{opacity: 0.5 }}>Google</span>
+            <span className="d-none d-md-flex" style={{opacity: 0.5 }}>Google</span>
         </a>
 
-        <div className="ms-2 d-flex d-lg-none">
+        <div className="d-flex d-lg-none">
             <HomeLink/>
         </div>
 

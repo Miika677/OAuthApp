@@ -1,13 +1,14 @@
 import { useState } from "react";
 import { postRequest } from "../api";
 
-function SubmitWord() {
+function SubmitWord({triggerRefresh}) {
   const [wordInput, setWordInput] = useState("");
 
   async function handleSubmitWord(postedWord) {
 
       await postRequest("/word", {word : postedWord});
       setWordInput("");
+      triggerRefresh();
 
   }
 
