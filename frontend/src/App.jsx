@@ -16,18 +16,23 @@ function App() {
   const navigate = useNavigate();
 
   const [topWord, setTopWord] = useState("Loading...");
+  const [refreshWord, setRefreshWord] = useState(0);
+
   const [user, setUser] = useState(null);
 
-  const [comments, setComments] = useState([]);
-  const [loadingComments, setLoadingComments] = useState(null);
-
-  //Fetch all data
   useEffect(()=> {
-    
+
     const fetchWord = async () => {
       const data = await getRequest("/word");
       if (data) {setTopWord(data.word);} else {setTopWord("-")}
     }
+
+    fetchWord();
+
+  },[refreshWord])
+
+  //Fetch all data
+  useEffect(()=> {
 
     const fetchUser = async () => {
       const data = await getRequest("/me");
@@ -36,17 +41,7 @@ function App() {
       }
     }
 
-    const fetchComments = async () => {
-      const data = await getRequest("/comments");
-      if (data != null) {
-        setComments(data);
-      }
-
-    }
-
-    fetchWord(); 
     fetchUser();
-    fetchComments();
 
   }, [])
 
@@ -104,7 +99,7 @@ function App() {
           <div className="bg-body p-2 mx-2 mt-lg-4 align-items-center rounded-4 w-100">
             <Routes>
               <Route path="/" element={<DefaultPage/>} />
-              <Route path="/word" element={<SubmitWord/>} />
+              <Route path="/word" element={<SubmitWord triggerRefresh={()=> setRefreshWord(r => r + 1)}/>}></Route>
               <Route path="/submissions" element={<Submissions/>} />
               <Route path="/guestbook" element={<GuestBook currentUser={user}/>} />
             </Routes>

@@ -8,6 +8,7 @@ function GuestBook({currentUser}) {
   const [loading, setLoading] = useState(true);
   const [commentInput, setCommentInput] = useState("");
   const [showModal, setShowModal] = useState(false);
+  const [refreshComments, setRefreshComments] = useState(0);
 
 
   useEffect(()=> {
@@ -25,7 +26,7 @@ function GuestBook({currentUser}) {
       
       fetchComments(); 
   
-  }, [])
+  }, [refreshComments])
 
 
   
@@ -33,6 +34,7 @@ function GuestBook({currentUser}) {
     
         await postRequest("/comments", {body : postedComment});
         setCommentInput("");
+        setRefreshComments(r => r + 1);
     
     }
 
