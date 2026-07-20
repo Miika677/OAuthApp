@@ -35,7 +35,7 @@ function GuestBook({currentUser}) {
         await postRequest("/comments", {body : postedComment});
         setCommentInput("");
         setRefreshComments(r => r + 1);
-    
+
     }
 
   return(
@@ -56,6 +56,11 @@ function GuestBook({currentUser}) {
     </div>
     
     {/* List of comments div */}
+    {loading ? 
+    (<div className="d-flex align-items-center justify-content-center h-50">
+      <h2 className="text-muted">Loading...</h2>
+    </div>) : (
+      
     <div className="flex-grow-1 overflow-auto px-lg-1">
 
       {/* Individual comment rendering */}
@@ -107,7 +112,10 @@ function GuestBook({currentUser}) {
           </div>
           
       ))}
+
+      
     </div>
+    )}
 
     {showModal&&
       <div className="d-flex justify-content-center align-items-center"
