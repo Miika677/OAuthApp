@@ -5,7 +5,7 @@ const GUESTBOOK = "Guestbook"
 function GuestBookLink(){
     return(
     <Link to="/guestbook"
-            className="d-flex align-items-center gap-2 py-1 text-decoration-none me-2 d-lg-none"
+            className="d-flex align-items-center gap-2 py-1 text-decoration-none d-lg-none"
             >
 
                 <img
