@@ -2,7 +2,7 @@ import { LOGOUT } from "../../constants/icons";
 
 function Profile({user, onLogout}) {
     return(
-    <div className="gap-2 d-flex flex-nowrap flex-lg-wrap align-items-center">
+    <div className="gap-2 py-1 d-flex flex-nowrap flex-lg-wrap align-items-center">
         <div className="d-flex  gap-2 align-items-center py-1">
             <img
                 src={user.avatar}
@@ -10,13 +10,13 @@ function Profile({user, onLogout}) {
                 style={{width: "45px", height: "45px", borderRadius: "50%" }}
             />
 
-            <span>
+            <span className="d-none d-md-block">
                 {user.username}
             </span>
 
         </div>
 
-        <a className="flex-shrink-0 me-5 me-lg-0" onClick={onLogout}>
+        <a className="flex-shrink-0 me-4 me-lg-0" onClick={onLogout}>
             <img
             src={LOGOUT}
             alt="Log out"

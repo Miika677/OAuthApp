@@ -10,9 +10,9 @@ const SUBMISSIONS = "Submission History"
 
 function UserBar({user, onLogout}) {
     return(
-<>
+    <>
 
-<Profile user={user} onLogout={onLogout}/>
+        <Profile user={user} onLogout={onLogout}/>
 
         <HomeLink/>
 
@@ -43,8 +43,9 @@ function UserBar({user, onLogout}) {
         </Link>
 
         <GuestBookLink/>
-</>
-)
+        
+    </>
+    )
 }
 
 export default UserBar;

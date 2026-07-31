@@ -5,7 +5,7 @@ const HOME = "Home"
 function HomeLink(){
     return(
     <Link to="/"
-            className="d-flex align-items-center gap-2 py-1 text-decoration-none"
+            className="d-flex align-items-center me-2 gap-2 py-1 text-decoration-none"
             >
 
                 <img
