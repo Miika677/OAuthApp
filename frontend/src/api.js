@@ -9,12 +9,11 @@ export async function getRequest(endpoint) {
         });
 
         if (res.status == 401 && endpoint == "/me") {
-            console.log("Works!")
             return null;
         }
         
         if (!res.ok) {
-            const err = await res.text();
+            const err = await res.json();
             console.error("GET failed:", err);
             return null;
         }
@@ -38,7 +37,7 @@ export async function postRequest(endpoint, contents) {
         });
 
         if (!res.ok) {
-            const err = await res.text();
+            const err = await res.json();
             console.error("GET failed:", err);
             return null;
         }

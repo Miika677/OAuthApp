@@ -1,6 +1,7 @@
 from fastapi import APIRouter, Depends, HTTPException
 from sqlalchemy.orm import Session
 
+from backend.constants.errors import ErrorCodes
 from backend.api.api_models import CommentsIn, CommentsOut
 from backend.auth.services import get_current_user_id
 from backend.comments.services import create_comments_service, get_comments_service
@@ -12,7 +13,10 @@ router = APIRouter()
 def get_comments(db: Session = Depends(start_session)):
     comments = get_comments_service(db)
     if not comments:
-        raise HTTPException(status_code=404, detail="No comments found")
+        raise HTTPException(
+            status_code=404, 
+            detail={"code":ErrorCodes.NO_COMMENTS, "message": "No comments found"}
+        )
     
     return comments
 
