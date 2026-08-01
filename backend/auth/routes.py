@@ -1,10 +1,12 @@
+import os
+
+from dotenv import load_dotenv
 from fastapi import APIRouter, Depends, Response
 from fastapi.responses import RedirectResponse
 from sqlalchemy.orm import Session
-from backend.db.db import start_session
+
 from backend.auth.services import login_db_service, github_login_url, github_token_exchange, github_get_user, get_current_user_id, get_me
-from dotenv import load_dotenv
-import os
+from backend.db.db import start_session
 
 load_dotenv()
 

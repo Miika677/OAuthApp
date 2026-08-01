@@ -1,9 +1,11 @@
 from fastapi import APIRouter, Depends, HTTPException
-from backend.api.api_models import WordOut, WordIn, SubmissionsOut
 from sqlalchemy.orm import Session
-from backend.db.db import start_session
-from backend.word.services import get_word_service, create_word_service, get_submissions_service
+
+from backend.api.api_models import SubmissionsOut, WordIn, WordOut
 from backend.auth.services import get_current_user_id
+from backend.db.db import start_session
+from backend.word.services import create_word_service, get_submissions_service, get_word_service
+
 router = APIRouter()
 
 @router.get("/word", response_model= WordOut)

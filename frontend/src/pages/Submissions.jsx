@@ -1,7 +1,7 @@
-import { useState, useEffect } from 'react'
-import { getRequest, postRequest } from "../api.js"
+import { useEffect, useState } from 'react'
 
-import { WRITE, TROPHY } from '../constants/icons.js';
+import { getRequest, postRequest } from '../api.js'
+import { TROPHY, WRITE } from '../constants/icons.js'
 
 function Submissions() {
     const [submissionsList, setSubmissionsList] = useState([]);

@@ -1,6 +1,8 @@
-import { Link } from "react-router-dom";
-import { INDEX } from "../../constants/icons"
-const HOME = "Home"
+import { Link } from 'react-router-dom'
+
+import { INDEX } from '../../constants/icons'
+
+const HOME = 'Home'
 
 function HomeLink(){
     return(

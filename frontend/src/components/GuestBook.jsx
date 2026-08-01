@@ -1,7 +1,8 @@
-import { useState, useEffect } from 'react'
-import { getRequest, postRequest } from "../api.js"
-import CommentField from './CommentField.jsx';
-import { WRITE } from '../constants/icons.js';
+import { useEffect, useState } from 'react'
+
+import { getRequest, postRequest } from '../api.js'
+import CommentField from './CommentField.jsx'
+import { WRITE } from '../constants/icons.js'
 
 function GuestBook({currentUser}) {
   const [commentsList, setCommentsList] = useState([]);

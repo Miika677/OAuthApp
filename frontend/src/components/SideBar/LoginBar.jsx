@@ -1,6 +1,6 @@
-import { GITHUB_LOGO, GOOGLE_LOGO } from "../../constants/icons";
-import GuestBookLink from "./GuestBookLink";
-import HomeLink from "./HomeLink";
+import { GITHUB_LOGO, GOOGLE_LOGO } from '../../constants/icons'
+import GuestBookLink from './GuestBookLink'
+import HomeLink from './HomeLink'
 
 function LoginBar() {
     const backendUrl = import.meta.env.VITE_BACKEND_URL;

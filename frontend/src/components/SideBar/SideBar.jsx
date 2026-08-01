@@ -1,8 +1,5 @@
-
-import UserBar from "./UserBar"
-import LoginBar from "./LoginBar"
-
-
+import LoginBar from './LoginBar'
+import UserBar from './UserBar'
 
 function SideBar({user, onLogout}) {
 

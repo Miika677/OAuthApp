@@ -1,12 +1,12 @@
-import defaultAvatar from "../assets/default.svg";
-import write from "../assets/write.svg";
-import history from "../assets/history.svg";
-import trophy from "../assets/trophy.svg";
-import speechbubbles from "../assets/speech-bubbles.svg";
-import home from "../assets/home.svg";
-import logout from "../assets/logout.svg";
-import github from "../assets/github.svg";
-import google from "../assets/google.svg";
+import defaultAvatar from '../assets/default.svg'
+import github from '../assets/github.svg'
+import google from '../assets/google.svg'
+import history from '../assets/history.svg'
+import home from '../assets/home.svg'
+import logout from '../assets/logout.svg'
+import speechbubbles from '../assets/speech-bubbles.svg'
+import trophy from '../assets/trophy.svg'
+import write from '../assets/write.svg'
 
 export const DEFAULT_AVATAR = defaultAvatar;
 export const WRITE = write;

@@ -1,6 +1,7 @@
+from datetime import datetime, timedelta
+
 from fastapi import Depends
 from jose import jwt
-from datetime import datetime, timedelta
 
 SECRET_KEY = "supersecret123"  # should eventually be an env var
 ALGORITHM = "HS256"
