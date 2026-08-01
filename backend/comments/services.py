@@ -1,6 +1,7 @@
 from sqlalchemy.orm import Session
-from backend.db.db_models import Comment, User
 from sqlalchemy.sql import func
+
+from backend.db.db_models import Comment, User
 
 
 def get_comments_service(db: Session):

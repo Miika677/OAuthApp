@@ -1,10 +1,12 @@
-from sqlalchemy.orm import Session
-from backend.db.db_models import User
-from backend.auth.tokens import create_token, decode_token
 import os
-import httpx
-from fastapi import HTTPException, Cookie
 from urllib.parse import urlencode
+
+import httpx
+from fastapi import Cookie, HTTPException
+from sqlalchemy.orm import Session
+
+from backend.auth.tokens import create_token, decode_token
+from backend.db.db_models import User
 
 
 GITHUB_CLIENT_ID = os.getenv("GITHUB_CLIENT_ID")

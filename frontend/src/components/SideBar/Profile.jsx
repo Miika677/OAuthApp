@@ -1,4 +1,4 @@
-import { LOGOUT } from "../../constants/icons";
+import { LOGOUT } from '../../constants/icons'
 
 function Profile({user, onLogout}) {
     return(

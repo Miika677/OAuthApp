@@ -1,10 +1,12 @@
+import os
+
+from dotenv import load_dotenv
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-from backend.word.routes import router as words_router
+
 from backend.auth.routes import router as auth_router
 from backend.comments.routes import router as comments_router
-import os
-from dotenv import load_dotenv
+from backend.word.routes import router as words_router
 
 load_dotenv()
 

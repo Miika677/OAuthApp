@@ -1,5 +1,7 @@
 from backend.auth.tokens import create_token, decode_token
 from backend.db.db_models import Vote
+
+
 def test_create_word_unauthorized(client):
     response = client.post("/word", json={"word": "test"})
 

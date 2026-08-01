@@ -1,15 +1,14 @@
-import { useState, useEffect } from 'react'
-import { BrowserRouter, Routes, Route, Link, useLocation, useNavigate } from "react-router-dom";
-import { getRequest, postRequest } from "./api.js"
-import reactLogo from "./assets/react.svg";
+import { useEffect, useState } from 'react'
+import { BrowserRouter, Link, Route, Routes, useLocation, useNavigate } from 'react-router-dom'
 
-import SubmitWord from "./pages/SubmitWord";
-import Submissions from './pages/Submissions.jsx';
-import DefaultPage from './pages/DefaultPage.jsx';
-import Login from "./pages/Login.jsx"
-import GuestBook from './components/GuestBook.jsx';
-
-import SideBar from './components/SideBar/SideBar.jsx';
+import { getRequest, postRequest } from './api.js'
+import reactLogo from './assets/react.svg'
+import GuestBook from './components/GuestBook.jsx'
+import SideBar from './components/SideBar/SideBar.jsx'
+import DefaultPage from './pages/DefaultPage.jsx'
+import Login from './pages/Login.jsx'
+import SubmitWord from './pages/SubmitWord'
+import Submissions from './pages/Submissions.jsx'
 
 function App() {
   const location = useLocation();

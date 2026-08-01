@@ -1,9 +1,11 @@
 from fastapi import APIRouter, Depends, HTTPException
-from backend.api.api_models import CommentsOut, CommentsIn
 from sqlalchemy.orm import Session
-from backend.db.db import start_session
-from backend.comments.services import get_comments_service, create_comments_service
+
+from backend.api.api_models import CommentsIn, CommentsOut
 from backend.auth.services import get_current_user_id
+from backend.comments.services import create_comments_service, get_comments_service
+from backend.db.db import start_session
+
 router = APIRouter()
 
 @router.get("/comments", response_model= list[CommentsOut])

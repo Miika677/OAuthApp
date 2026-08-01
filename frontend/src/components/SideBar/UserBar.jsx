@@ -1,9 +1,9 @@
-import Profile from "./Profile"
-import GuestBookLink from "./GuestBookLink";
-import HomeLink from "./HomeLink";
+import { Link } from 'react-router-dom'
 
-import { WRITE, HISTORY, COMMENTS } from "../../constants/icons"
-import { Link } from "react-router-dom";
+import { COMMENTS, HISTORY, WRITE } from '../../constants/icons'
+import GuestBookLink from './GuestBookLink'
+import HomeLink from './HomeLink'
+import Profile from './Profile'
 
 const SUBMIT_WORD = "Submit a Word"
 const SUBMISSIONS = "Submission History"

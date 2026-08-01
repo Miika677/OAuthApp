@@ -1,5 +1,6 @@
-import { useState } from "react";
-import { postRequest } from "../api.js"
+import { useState } from 'react'
+
+import { postRequest } from '../api.js'
 
 function CommentField({input, setInput, postComment}) {
 

@@ -1,6 +1,8 @@
-import { Link } from "react-router-dom";
-import { COMMENTS } from "../../constants/icons"
-const GUESTBOOK = "Guestbook"
+import { Link } from 'react-router-dom'
+
+import { COMMENTS } from '../../constants/icons'
+
+const GUESTBOOK = 'Guestbook'
 
 function GuestBookLink(){
     return(

@@ -1,8 +1,9 @@
-
 from datetime import datetime, timezone
+
 from sqlalchemy import desc
-from sqlalchemy.sql import func
 from sqlalchemy.orm import Session
+from sqlalchemy.sql import func
+
 from backend.db.db_models import Word, Vote
 
 
