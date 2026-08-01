@@ -54,25 +54,30 @@ function Submissions() {
 
   return(
       <div className="mx-2 mx-md-5 mx-lg-0">
+        <div>
+          <form
+          onSubmit={(e) => {
+          e.preventDefault();
+          handleLookUp(lookUpInput);
+          setLoading(true);
+          }}
+          className="d-flex gap-2"
+          >
+            <input
+              type="text"
+              value={lookUpInput}
+              onChange={(e) => setLookUpInput(e.target.value)}
+              placeholder="Look up another user"
+            />
+            <button type="submit" className="btn btn-primary">
+              Look Up
+            </button>
+            
+            
 
-        <form
-        onSubmit={(e) => {
-        e.preventDefault();
-        handleLookUp(lookUpInput);
-        setLoading(true);
-        }}
-        className="d-flex gap-2"
-        >
-          <input
-            type="text"
-            value={lookUpInput}
-            onChange={(e) => setLookUpInput(e.target.value)}
-            placeholder="Look up another user"
-          />
-          <button type="submit" className="btn btn-primary">
-            Look Up
-          </button>
-      </form>
+          </form>
+          <div>for errors</div>
+        </div>
 
         <p>{userName} submissions</p>
 
