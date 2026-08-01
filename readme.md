@@ -8,6 +8,20 @@ The goal of this project is to simulate a real-world authentication flow and pra
 
 **Visit the website at https://o-auth-app-theta.vercel.app/**
 
+## Key Features
+App Features:
+- GitHub OAuth authentication
+- Add new words or vote for existing ones
+- Live ranking of most voted word
+- Guestbook
+- Responsive design
+
+Development:
+- Full-stack CRUD architecture
+- CI/CD Pipeline
+- Backend tests
+- App deployed
+
 ## Current Status
 
 - Basic word voting system functionality: implemented
@@ -30,17 +44,3 @@ The goal of this project is to simulate a real-world authentication flow and pra
 - Bootstrap
 - Render (DB & Backend deployment)
 - Vercel (Frontend deployment)
-
-## Key Features
-App Features:
-- GitHub OAuth authentication
-- Add new words or vote for existing ones
-- Live ranking of most voted word
-- Guestbook
-- Responsive design
-
-Development:
-- Full-stack CRUD architecture
-- CI/CD Pipeline
-- Backend tests
-- App deployed
