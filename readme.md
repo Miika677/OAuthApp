@@ -1,4 +1,4 @@
-# Word of the Day CRUD App with GitHub OAuth Login
+# Word of the Day CRUD App with GitHub OAuth Login, Testing and CI/CD Pipeline
 
 ## Overview
 
