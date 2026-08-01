@@ -4,7 +4,7 @@ from sqlalchemy import desc
 from sqlalchemy.orm import Session
 from sqlalchemy.sql import func
 
-from backend.db.db_models import Word, Vote
+from backend.db.db_models import Word, Vote, User
 
 
 def get_word_service(db: Session):
@@ -40,6 +40,28 @@ def get_submissions_service(id_from_token : int, db: Session):
         {
             "word": word.word,
             "is_first_submitted": word.first_submitted_user_id == id_from_token,
+            "has_been_wotd" : word.has_been_wotd
+        }
+        for word in submitted_words
+    ]
+
+def look_up_submissions_service(look_up_name : str, db: Session):
+
+    looked_up_user = db.query(User).filter(User.username.ilike(look_up_name)).first()
+    if not looked_up_user:
+        return None
+
+    submitted_words = (
+    db.query(Word)
+    .join(Vote, Vote.word_id == Word.id)
+    .filter(Vote.user_id == looked_up_user.id)
+    .all()
+    )
+
+    return [
+        {
+            "word": word.word,
+            "is_first_submitted": word.first_submitted_user_id == looked_up_user.id,
             "has_been_wotd" : word.has_been_wotd
         }
         for word in submitted_words
