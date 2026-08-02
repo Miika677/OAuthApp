@@ -18,6 +18,7 @@ App Features:
 
 Development:
 - Full-stack CRUD architecture
+- Containerized local development environment (Docker Compose)
 - CI/CD Pipeline
 - Backend tests
 - App deployed
@@ -44,3 +45,4 @@ Development:
 - Bootstrap
 - Render (DB & Backend deployment)
 - Vercel (Frontend deployment)
+- Docker & Docker Compose
