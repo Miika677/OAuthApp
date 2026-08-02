@@ -34,8 +34,9 @@ Development:
 
 - Currently working on: Website functionality & refactoring
 
-### Possible Future Additions
+### Possible Future Additions & Modifications
 
+- Migrate backend and database deployment from Render to self-hosted Oracle Cloud Free Tier using Docker Compose
 - Different OAuth services with linked local account; support for multiple login providers
 - Postgresql Docker container as testing DB to replace in-memory SQLite
 - Render Cron Jobs to periodically remove words that haven't been voted for in a while, potentially supplemented by AI-assisted detection of gibberish or low-quality submissions (if a suitable free API is available)
