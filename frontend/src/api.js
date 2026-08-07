@@ -1,5 +1,5 @@
 const backendUrl = import.meta.env.VITE_BACKEND_URL;
-const API_BASE = backendUrl;
+const API_BASE = backendUrl + "/api";
 
 export async function getRequest(endpoint) {
     try {
