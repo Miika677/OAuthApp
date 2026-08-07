@@ -12,7 +12,7 @@ function LoginBar() {
             </div>
             
             <a 
-            href={`${backendUrl}/login/oauth`}
+            href={`${backendUrl}/api/login/oauth`}
             className="d-flex me-2 me-lg-0 align-items-center gap-2 py-1 text-decoration-none"
             >
                 <img
