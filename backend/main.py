@@ -20,9 +20,10 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-app.include_router(words_router)
-app.include_router(auth_router)
-app.include_router(comments_router)
+API_PREFIX = "/api"
+app.include_router(words_router, prefix=API_PREFIX)
+app.include_router(auth_router, prefix=API_PREFIX)
+app.include_router(comments_router, prefix=API_PREFIX)
 
 
 
