@@ -34,11 +34,15 @@ Development:
 
 
 ### Possible Future Additions & Modifications
-
-- Migrate backend and database deployment from Render to self-hosted Oracle Cloud Free Tier using Docker Compose (Currently working on Docker-compose files for local dev and production)
 - Different OAuth services with linked local account; support for multiple login providers
 - Postgresql Docker container as testing DB to replace in-memory SQLite
 - Render Cron Jobs to periodically remove words that haven't been voted for in a while, potentially supplemented by AI-assisted detection of gibberish or low-quality submissions (if a suitable free API is available)
+
+#### Planned Deployment Architecture
+
+A future goal is to self-host the full application using Docker Compose on a cloud VM. The planned setup would use Caddy as a reverse proxy, with the frontend and FastAPI backend running on a private Docker network. Backend routes are organized under /api to allow the reverse proxy to route API traffic separately from frontend requests.
+
+This has not yet been deployed to a cloud VM due to the payment requirements of the cloud providers considered.
 
 ## Tech Stack
 - React, FastAPI, PostgreSQL
