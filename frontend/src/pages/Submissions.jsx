@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 
 import { getRequest, postRequest } from '../api.js'
-import { ERROR_CODES } from '../constants/errors.js'
+import { ERROR_CODES, ERROR_MESSAGES } from '../constants/errors.js'
 import { TROPHY, WRITE } from '../constants/icons.js'
 
 function Submissions() {
@@ -19,8 +19,14 @@ function Submissions() {
     let data = await getRequest("/submissions" + optionalUser);
 
     //Return currently logged in users submissions if http error occurs during user search
-    if (data?.detail?.code) {   
-      setErrorMessage(optionalUser ? data.detail.message : "");
+    const errorCode = data?.detail?.error_code || data?.error_code;
+    
+    if (errorCode) {   
+      const errorMessageFromCode = 
+      ERROR_MESSAGES[errorCode] || 
+      ERROR_MESSAGES[ERROR_CODES.UNKNOWN_ERROR];
+
+      setErrorMessage(optionalUser ? errorMessageFromCode : "");
       setLoading(false);
       return false;
     }
@@ -29,7 +35,6 @@ function Submissions() {
       setErrorMessage("");
       setLoading(false);
       return true;
-
   }
 
   async function handleLookUp(userSearch) {
@@ -43,7 +48,6 @@ function Submissions() {
     const success = await fetchSubmissions(`?username=${userSearch}`);
     setUsername(success ? `${userSearch}'s` : "Your");
     setLookUpInput("");
-
   }
 
   useEffect(()=> {

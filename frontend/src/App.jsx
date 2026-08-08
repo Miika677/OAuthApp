@@ -1,9 +1,10 @@
 import { useEffect, useState } from 'react'
 import { BrowserRouter, Link, Route, Routes, useLocation, useNavigate } from 'react-router-dom'
 
-import { getRequest, postRequest } from './api.js'
+import { getRequest, postRequest, setNetworkErrorHandler } from './api.js'
 import reactLogo from './assets/react.svg'
 import GuestBook from './components/GuestBook.jsx'
+import NetworkError from './components/NetworkError.jsx'
 import SideBar from './components/SideBar/SideBar.jsx'
 import DefaultPage from './pages/DefaultPage.jsx'
 import Login from './pages/Login.jsx'
@@ -14,16 +15,25 @@ function App() {
   const location = useLocation();
   const navigate = useNavigate();
 
+  const [networkError, setNetworkError] = useState(false);
+
   const [topWord, setTopWord] = useState("Loading...");
   const [refreshWord, setRefreshWord] = useState(0);
 
   const [user, setUser] = useState(null);
 
   useEffect(()=> {
-
     const fetchWord = async () => {
       const data = await getRequest("/word");
-      if (data) {setTopWord(data.word);} else {setTopWord("-")}
+
+      const errorCode = data?.detail?.error_code || data?.error_code;
+
+      if (errorCode) {
+        setTopWord("-");
+        return;
+      }
+
+    setTopWord(data?.word || "-");
     }
 
     fetchWord();
@@ -32,7 +42,6 @@ function App() {
 
   //Fetch all data
   useEffect(()=> {
-
     const fetchUser = async () => {
       const data = await getRequest("/me");
       if (data != null) {
@@ -41,7 +50,6 @@ function App() {
     }
 
     fetchUser();
-
   }, [])
 
   //redirect out of guestbook when resizing to desktop
@@ -64,8 +72,11 @@ function App() {
         return () => {
             mediaQuery.removeEventListener("change", redirectIfNeeded);
         };
-
     }, [location.pathname, navigate]);
+
+    useEffect(() =>{
+      setNetworkErrorHandler(() => setNetworkError(true));
+    })
 
 
   const handleLogout = async () => {
@@ -78,11 +89,13 @@ function App() {
     <div className="container-fluid">
 
       <div className="row desktop-full-height">
+
+        {networkError && <NetworkError onClose={() => setNetworkError(false)}/>}
+
         <div className="col-12 col-lg-2">
           <div className="p-4">
             <SideBar user={user} onLogout={handleLogout}/>
           </div>
-          
         </div>
 
         <div className="col-12 col-lg-6 px-0 px-lg-5 d-flex flex-column align-items-center bg-body-tertiary">

@@ -1,5 +1,13 @@
+import { ERROR_CODES } from './constants/errors.js'
+
 const backendUrl = import.meta.env.VITE_BACKEND_URL;
 const API_BASE = backendUrl + "/api";
+
+let errorMessageSetter = null;
+
+export function setNetworkErrorHandler(passedFunction) {
+    errorMessageSetter = passedFunction;
+}
 
 export async function getRequest(endpoint) {
     try {
@@ -23,7 +31,8 @@ export async function getRequest(endpoint) {
 
     } catch (err) {
         console.error("Network error:", err);
-        return null;
+        errorMessageSetter?.();
+        return {"error_code" : ERROR_CODES.NETWORK_ERROR};
     }
 }
 
@@ -47,6 +56,7 @@ export async function postRequest(endpoint, contents) {
         
     } catch (err) {
         console.error("Network error:", err);
-        return null;
+        errorMessageSetter?.();
+        return {"error_code" : ERROR_CODES.NETWORK_ERROR};
     }
 }
