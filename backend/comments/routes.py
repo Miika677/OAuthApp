@@ -15,7 +15,7 @@ def get_comments(db: Session = Depends(start_session)):
     if not comments:
         raise HTTPException(
             status_code=404, 
-            detail={"code":ErrorCodes.NO_COMMENTS, "message": "No comments found"}
+            detail={"error_code":ErrorCodes.NO_COMMENTS, "message": "No comments found"}
         )
     
     return comments

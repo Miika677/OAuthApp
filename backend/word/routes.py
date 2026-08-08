@@ -17,7 +17,7 @@ def get_word(db: Session = Depends(start_session)):
     if not word:
         raise HTTPException(
             status_code=404, 
-            detail={"code":ErrorCodes.NO_SUBMISSIONS, "message": "No submitted words"}
+            detail={"error_code":ErrorCodes.NO_SUBMISSIONS, "message": "No submitted words"}
         )
     
     return word
@@ -37,7 +37,7 @@ def get_submissions(username : Optional[str] = None, token_id : int = Depends(ge
         if not submissions:
             raise HTTPException(
                 status_code=404, 
-                detail={"code":ErrorCodes.NO_SUBMISSIONS, "message": "No submitted words"}
+                detail={"error_code":ErrorCodes.NO_SUBMISSIONS, "message": "No submitted words"}
             )
           
     if username:
@@ -46,13 +46,13 @@ def get_submissions(username : Optional[str] = None, token_id : int = Depends(ge
         if submissions is None:
             raise HTTPException(
                 status_code=404, 
-                detail={"code":ErrorCodes.USER_NOT_FOUND, "message": "No user found"}
+                detail={"error_code":ErrorCodes.USER_NOT_FOUND, "message": "No user found"}
             )
 
         if not submissions:
             raise HTTPException(
                 status_code=404, 
-                detail={"code":ErrorCodes.NO_SUBMISSIONS, "message": "No submitted words"}
+                detail={"error_code":ErrorCodes.NO_SUBMISSIONS, "message": "No submitted words"}
             )
     
     return submissions
