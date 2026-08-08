@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 
 import { getRequest, postRequest } from '../api.js'
+import { ERROR_CODES } from '../constants/errors.js'
 import { TROPHY, WRITE } from '../constants/icons.js'
 
 function Submissions() {
@@ -10,21 +11,25 @@ function Submissions() {
   const [userName, setUsername] = useState("Your");
   const [lookUpInput, setLookUpInput] = useState("");
 
+  const [errorMessage, setErrorMessage] = useState("")
+
+ 
+
   const fetchSubmissions = async (optionalUser = "") => {
     let data = await getRequest("/submissions" + optionalUser);
 
-    //Fallback for changing displayed username
-    let success = true;
+    //Return currently logged in users submissions if http error occurs during user search
+    if (data?.detail?.code) {   
+      setErrorMessage(optionalUser ? data.detail.message : "");
+      setLoading(false);
+      return false;
+    }
 
-    if (data === null && optionalUser) {
-      data = await getRequest("/submissions");
-      success = false;
-    }   
-    
-    setSubmissionsList(data);
-    setLoading(false);
+      setSubmissionsList(data);
+      setErrorMessage("");
+      setLoading(false);
+      return true;
 
-    return(success) 
   }
 
   async function handleLookUp(userSearch) {
@@ -36,21 +41,25 @@ function Submissions() {
     }
     
     const success = await fetchSubmissions(`?username=${userSearch}`);
-    if(success === true) {
-      setUsername(`${userSearch}'s`)
-    }
-    else {
-      setUsername("Your")
-    }
-    
+    setUsername(success ? `${userSearch}'s` : "Your");
     setLookUpInput("");
-  }
 
+  }
 
   useEffect(()=> {
     fetchSubmissions(); 
-    }, [])
-  
+    }, []);
+
+  //Error message timeout effect
+  useEffect(() => {
+  if (!errorMessage) return;
+
+  const timer = setTimeout(() => {
+    setErrorMessage("");
+  }, 5000);
+
+  return () => clearTimeout(timer);
+  }, [errorMessage]);
 
   return(
       <div className="mx-2 mx-md-5 mx-lg-0">
@@ -58,8 +67,8 @@ function Submissions() {
           <form
           onSubmit={(e) => {
           e.preventDefault();
-          handleLookUp(lookUpInput);
           setLoading(true);
+          handleLookUp(lookUpInput);      
           }}
           className="d-flex gap-2"
           >
@@ -76,7 +85,9 @@ function Submissions() {
             
 
           </form>
-          <div>for errors</div>
+
+          {errorMessage&&<p className="text-danger">Error: {errorMessage}</p>}
+
         </div>
 
         <p>{userName} submissions</p>

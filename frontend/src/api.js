@@ -15,7 +15,7 @@ export async function getRequest(endpoint) {
         if (!res.ok) {
             const err = await res.json();
             console.error("GET failed:", err);
-            return null;
+            return err;
         }
 
         const data = await res.json();
@@ -37,9 +37,9 @@ export async function postRequest(endpoint, contents) {
         });
 
         if (!res.ok) {
-            const err = await res.json();
-            console.error("GET failed:", err);
-            return null;
+             const err = await res.json();
+            console.error("POST failed:", err);
+            return err;
         }
 
         const data = await res.json();
