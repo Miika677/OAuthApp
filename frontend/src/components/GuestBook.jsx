@@ -15,7 +15,7 @@ function GuestBook({currentUser}) {
   useEffect(()=> {
       const fetchComments = async () => {
         const data = await getRequest("/comments");
-        if (data) {
+        if (Array.isArray(data)) {
           setCommentsList(data);
         }
         else {
