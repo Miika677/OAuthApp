@@ -31,6 +31,7 @@ Development:
 - Testing: Basic backend tests for word endpoints implemented with pytest (in progress)
 - CI pipeline: Implemented (GitHub Actions)
 - Deployment: Deployed! https://o-auth-app-theta.vercel.app/
+- Currently working on: another project. Next up for this app is to add redirects to index when addressing authorization-required routes while being logged out.
 
 
 ### Possible Future Additions & Modifications
