@@ -34,7 +34,7 @@ Development:
 - Currently working on: another project. Next up for this app is to add redirects to index when addressing authorization-required routes while being logged out.
 
 
-### Possible Future Additions & Modifications
+### Future Additions & Modifications
 - Different OAuth services with linked local account; support for multiple login providers
 - Postgresql Docker container as testing DB to replace in-memory SQLite
 - Render Cron Jobs to periodically remove words that haven't been voted for in a while, potentially supplemented by AI-assisted detection of gibberish or low-quality submissions (if a suitable free API is available)
